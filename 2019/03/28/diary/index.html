@@ -7,17 +7,17 @@
   
   <title>diary | See you again</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git git config –global credential.helper store 保存输入的账号密码 git remote -v   //  查看远程分支情况 git remote rm name  // 删除远程分支 git remote add origin(name) remote_url  //  添加远程分支">
+  <meta name="description" content="git git config –global credential.helper store 保存输入的账号密码 git remote -v   //  查看远程分支情况 git remote rm name  // 删除远程分支 git remote add origin(name) remote_url  //  添加远程分支  gcc cc -E  // 预处理 cc -S  // 编译，生">
 <meta property="og:type" content="article">
 <meta property="og:title" content="diary">
 <meta property="og:url" content="http://yoursite.com/2019/03/28/diary/index.html">
 <meta property="og:site_name" content="See you again">
-<meta property="og:description" content="git git config –global credential.helper store 保存输入的账号密码 git remote -v   //  查看远程分支情况 git remote rm name  // 删除远程分支 git remote add origin(name) remote_url  //  添加远程分支">
+<meta property="og:description" content="git git config –global credential.helper store 保存输入的账号密码 git remote -v   //  查看远程分支情况 git remote rm name  // 删除远程分支 git remote add origin(name) remote_url  //  添加远程分支  gcc cc -E  // 预处理 cc -S  // 编译，生">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-28T09:24:32.771Z">
+<meta property="og:updated_time" content="2019-03-29T01:11:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="diary">
-<meta name="twitter:description" content="git git config –global credential.helper store 保存输入的账号密码 git remote -v   //  查看远程分支情况 git remote rm name  // 删除远程分支 git remote add origin(name) remote_url  //  添加远程分支">
+<meta name="twitter:description" content="git git config –global credential.helper store 保存输入的账号密码 git remote -v   //  查看远程分支情况 git remote rm name  // 删除远程分支 git remote add origin(name) remote_url  //  添加远程分支  gcc cc -E  // 预处理 cc -S  // 编译，生">
   
     <link rel="alternate" href="/atom.xml" title="See you again" type="application/atom+xml">
   
@@ -92,17 +92,89 @@
 <li>git remote rm name  // 删除远程分支</li>
 <li>git remote add origin(name) remote_url  //  添加远程分支</li>
 </ul>
+<h1 id="gcc"><a href="#gcc" class="headerlink" title="gcc"></a>gcc</h1><ul>
+<li>cc -E  // 预处理</li>
+<li>cc -S  // 编译，生成.s文件（生成汇编文件）</li>
+<li>cc -c  // 编译汇编，生成.o文件（生成二进制文件）</li>
+</ul>
+<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><ul>
+<li><p>用于大型工程的编译，Makefile文件指定如何编译，Make是一个命令工具，用于解析Makefile。<strong>编译</strong>，源文件生成目标文件，将目标文件合成可执行文件，叫做<strong>链接（link）</strong>，主要是链接函数和全局变量。由于目标文件太多，链接时需要指定目标文件名，比较麻烦，因此就把目标文件打包，生成.a文件（Unix，Archive file）（Windows，.lib文件，library file）。主要用于C/C++工程编译。</p>
+</li>
+<li><p>格式：</p>
+<blockquote>
+<p>target : prerequisites</p>
+<p>​    command: </p>
+<p>target：目标文件，可执行文件，标签（伪目标）</p>
+<p>prerequisites：生成该target所依赖的文件</p>
+<p>command：前面需要有个tab键，shell命令</p>
+</blockquote>
+</li>
+<li><p>Make工作方式</p>
+<blockquote>
+<ol>
+<li>make在当前目录下寻找“Makefile”或“makefile”的文件，可以用 -f 指定文件。</li>
+<li>找文件中的第一个目标文件，作为最终的目标文件。</li>
+<li>目标文件不存在或者文件存在，但其依赖的文件修改日期比文件新，则会执行后面的命令来生成目标文件。</li>
+<li>如果该目标文件所依赖的文件也不存在，则make会在当前的文件中寻找该文件的依赖性。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>Makefile</p>
+<blockquote>
+<p>Makefile里面主要有5个部分：显示规则，隐式规则，变量定义，文件指示，注释。</p>
+<ol>
+<li>显示规则：显示规则定义如何生成一个目标文件</li>
+<li>隐式规则：make的自动推到功能</li>
+<li>变量定义：类似于C语言中的宏定义功能</li>
+<li>文件指示：<ol>
+<li>文件包含： include  <filename><ol>
+<li>make命令执行时，会把include 的文件的内容放在当前的位置。</li>
+</ol>
+</filename></li>
+<li>预编译：类似于C语言的 #if</li>
+<li>多行的命令</li>
+</ol>
+</li>
+<li>注释：#</li>
+</ol>
+<p>最终会这样执行：</p>
+<ol>
+<li>读入Makefile文件</li>
+<li>读入include的文件</li>
+<li>初始化变量</li>
+<li>推到隐式规则</li>
+<li>根据规则生成目标文件</li>
+</ol>
+</blockquote>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/diary/" data-id="cjtsfq3yh00004oj809ucbqr8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/diary/" data-id="cjttdhgl60000cij8mcbr5oca" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2019/03/28/Make/Makefile/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Makefile
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -133,6 +205,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/28/Make/Makefile/">Makefile</a>
+          </li>
         
           <li>
             <a href="/2019/03/28/diary/">diary</a>
