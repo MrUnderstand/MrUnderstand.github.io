@@ -86,6 +86,8 @@
       
         <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><ul>
 <li>git config –global credential.helper store 保存输入的账号密码</li>
+</ul>
+<ul>
 <li>git remote -v   //  查看远程分支情况</li>
 <li>git remote rm name  // 删除远程分支</li>
 <li>git remote add origin(name) remote_url  //  添加远程分支</li>
@@ -144,7 +146,99 @@
 <li>根据规则生成目标文件</li>
 </ol>
 </blockquote>
+</li>
+<li><p>= := ?= +=</p>
+<blockquote>
+<p>= :基本的赋值</p>
+<p>:= ：在定义时展开（makefile是先全局展开后，再决定变量的值，:=表示变量的值决定于它在maefile中的位置）</p>
+<p>?=：如果没有被赋值过，就赋值为后面的值</p>
+<p>+=：添加等号后面的值</p>
+</blockquote>
+</li>
+<li><p>wildcard</p>
+<blockquote>
+<p>$(wildcard *.c)，获取工作目录下的所有的.c文件</p>
+<p>高级用法：\$(patsubst %.c,%.o, \$(wildcar *.c))</p>
+</blockquote>
+<h1 id="Uinix网络编程"><a href="#Uinix网络编程" class="headerlink" title="Uinix网络编程"></a>Uinix网络编程</h1><blockquote>
+<p>应用层</p>
+<p>会话层</p>
+<p>表示层                     应用层                应用层</p>
+<p>传输层            TCP                    内核态</p>
+<p>网络层                      IP</p>
+<p>网络链路层        驱动和硬件</p>
+<p>物理层</p>
 <p>​</p>
+</blockquote>
+<ul>
+<li>int socket(int domain, int type, int protocol)</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>include &lt;sys/types.h&gt;  &lt;sys/socket.h&gt;，其中,&lt;sys/types.h&gt;是为了可移植性。（有些版本需要）</p>
+</li>
+<li><p>domain:AF_LOCAL，AF_INET，AF_INET6，AF_NETLINK（内核用户接口设备），通信域</p>
+</li>
+<li><p>type:SOCK_STREAM ：顺序的，可靠的，双向的，基于链接的字节流，可能支持带外传输机制</p>
+<p>SOCK_DGRAM：非连接，固定最大长度的不可靠消息</p>
+</li>
+<li><p>protocal</p>
+</li>
+<li><p>成功返回文件描述符（&gt;0），失败，返回-1，同时errno被设置。</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>int connect(int sockfd, const struct sockaddr *addr, socklent_t addrlen)</li>
+<li>int inet_aton(const char <em>p, struct in_addr </em>inp)</li>
+</ul>
+<blockquote>
+<p>将网络主机地址转换为二进制数值</p>
+</blockquote>
+<ul>
+<li>int inet_ntoa(struct in_adrr in)</li>
+</ul>
+<blockquote>
+<p>将网络自己排序的地址转换为ASCII以点分开的地址</p>
+</blockquote>
+<ul>
+<li>int inet_pton(int family, const char <em> strptr, void </em>addrptr)</li>
+<li>const char <em> inet_ntop(int faimly, const void </em>addrptr ,char *strptr, size_t len)</li>
+</ul>
+<blockquote>
+<p>p:presentaiton, n:numeric</p>
+<p>兼容IPV4和IPV6</p>
+</blockquote>
+<ul>
+<li>​</li>
+</ul>
+<h1 id="UNIX环境高级编程"><a href="#UNIX环境高级编程" class="headerlink" title="UNIX环境高级编程"></a>UNIX环境高级编程</h1><ul>
+<li><p>DIR <em>opendir(const char </em>name);</p>
+</li>
+<li><p>struct dirent <em>readdir(DIR </em>dirp);</p>
+</li>
+<li><p>int closedir(DIR *dirp);</p>
+<blockquote>
+<p>opendir返回DIR结构体指针，readdir与closedir来使用，不需要特别care结构体内容</p>
+<pre><code>struct dirent {
+    ino_t          d_ino;       /* inode number */
+    off_t          d_off;       /* not an offset; see NOTES */
+    unsigned short d_reclen;    /* length of this record */
+    unsigned char  d_type;      /* type of file; not supported
+                                   by all filesystem types */
+    char           d_name[256]; /* filename */
+};
+</code></pre></blockquote>
+<ul>
+<li>STDIN_FILENO/STDOUT_FILENO</li>
+</ul>
+<blockquote>
+<p>系统级的标准IO的输入输出文件描述符，类型为int，用于系统调用：read  write  close</p>
+<p>stdin/stdout，是标准IO的输入输出，类型为 FILE*，属于库函数</p>
+</blockquote>
+<p>​</p>
+</li>
+</ul>
 <p>​</p>
 </li>
 </ul>
@@ -152,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/28/diary/" data-id="cjttdlsxn0000i6j8bsgtz09m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/28/diary/" data-id="cju2glsxk00001rj8u9x54yyi" class="article-share-link">Share</a>
       
       
     </footer>
